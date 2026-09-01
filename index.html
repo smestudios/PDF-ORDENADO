@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Une facturas PDF ordenadas por fecha en un documento Word, directamente en el navegador." />
+    <title>Ordenador de facturas PDF</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">PROCESAMIENTO LOCAL</p>
+        <h1>Facturas PDF a Word</h1>
+        <p class="intro">Carga tus facturas y descarga un Word ordenado por fecha. Los archivos se procesan en este navegador: no se envían a ningún servidor.</p>
+      </header>
+
+      <section class="card" aria-labelledby="upload-title">
+        <h2 id="upload-title">1. Selecciona los PDF</h2>
+        <label class="drop-zone" for="pdf-files">
+          <span class="upload-icon" aria-hidden="true">↑</span>
+          <span><strong>Elige uno o varios PDF</strong><br />o arrástralos aquí</span>
+          <input id="pdf-files" type="file" accept="application/pdf,.pdf" multiple />
+        </label>
+        <p class="hint">La fecha debe aparecer en el nombre como <code>DD-MM-AAAA</code> o <code>AAAA-MM-DD</code>. El texto tras la fecha se usa como contraseña si el PDF está protegido.</p>
+      </section>
+
+      <section class="card" aria-labelledby="files-title">
+        <div class="section-title">
+          <h2 id="files-title">2. Revisa el orden</h2>
+          <button id="clear-files" class="text-button" type="button" disabled>Limpiar</button>
+        </div>
+        <p id="empty-state" class="empty-state">Aún no has seleccionado archivos.</p>
+        <ol id="file-list" class="file-list" aria-live="polite"></ol>
+      </section>
+
+      <section class="card action-card" aria-labelledby="generate-title">
+        <h2 id="generate-title">3. Genera el Word</h2>
+        <p>Se añadirá una factura por sección y cada página conservará su aspecto original como imagen.</p>
+        <button id="generate" class="primary-button" type="button" disabled>Crear y descargar Word</button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/docx@9.5.1/dist/index.iife.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
