@@ -1,0 +1,5 @@
+# Contenido de entrada, resultados y archivos temporales locales.
+Facturas/
+*.docx
+facturas_con_error.csv
+__pycache__/
