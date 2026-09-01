@@ -1,8 +1,21 @@
 # Organizador de facturas PDF
 
-`organizar_facturas.py` reúne facturas PDF en un único Word, ordenadas por la
-fecha indicada en el nombre del archivo. Cada página se inserta como imagen para
-que la factura conserve su aspecto original.
+Esta es una aplicación web estática: no contiene backend, scripts Python ni
+pasos de instalación. Puede desplegarse directamente en Vercel, Netlify o
+cualquier hosting que sirva archivos HTML.
+
+## Uso
+
+1. Abra la página web desplegada o `index.html` en un navegador moderno.
+2. Seleccione o arrastre los PDF de las facturas.
+3. Revise el orden y pulse **Crear y descargar Word**.
+
+La página genera `Facturas_ordenadas.docx` en el navegador. Cada página de las
+facturas se adjunta como imagen para conservar su aspecto original.
+
+Todo el procesamiento se realiza localmente: los PDF y las contraseñas no se
+suben a ningún servidor. La página necesita conexión a internet para cargar las
+bibliotecas públicas que leen los PDF y generan el documento Word.
 
 ## Formato de los nombres
 
@@ -18,29 +31,3 @@ guiones o guiones bajos, ese texto se usa como contraseña.
 
 El sufijo de copias de Windows, por ejemplo ` (1)`, no se considera parte de la
 contraseña.
-
-## Uso
-
-1. Extraiga `Facturas.rar`. Debe quedar una carpeta llamada `Facturas` al lado
-   del programa (ya está extraída en este proyecto).
-2. Instale los requisitos:
-
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
-
-3. Cree el Word:
-
-   ```bash
-   python organizar_facturas.py
-   ```
-
-   O indique otra carpeta y un nombre de salida:
-
-   ```bash
-   python organizar_facturas.py "C:\\Mis facturas" --output "C:\\Salida\\Facturas_ordenadas.docx"
-   ```
-
-El resultado predeterminado es `Facturas_ordenadas.docx`. Si un documento no
-puede abrirse, los demás se procesan y se genera `facturas_con_error.csv` con el
-motivo. No se copia ni se muestra ninguna contraseña en ese informe.
